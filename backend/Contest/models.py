@@ -13,7 +13,7 @@ class Contest(models.Model):
     
     
     def __str__(self):
-        return self.name+str(self.duration)
+        return self.name
 
 
 class Question(models.Model):
@@ -35,3 +35,5 @@ class Question(models.Model):
     memory_limit = models.CharField(max_length=40)
     contest = models.ForeignKey(
         Contest, on_delete=models.CASCADE, related_name='questions')
+
+

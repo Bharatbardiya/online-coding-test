@@ -1,0 +1,22 @@
+/* src/app/landing-page/landing-page.component.scss */
+
+.landing-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 78vh;
+    background-color: #ffffff;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .options {
+    margin-top: 20px;
+  
+    a {
+      margin: 0 10px;
+    }
+  }
+  

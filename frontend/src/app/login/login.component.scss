@@ -1,0 +1,21 @@
+/* src/app/login/login.component.scss */
+
+.login-card {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  mat-form-field {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}

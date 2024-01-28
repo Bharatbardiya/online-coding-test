@@ -1,0 +1,20 @@
+<!-- src/app/contest/contest.component.html -->
+
+<mat-card class="contest-card" *ngFor="let contest of contests">
+  <mat-card-header>
+    <mat-card-title>{{ contest.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Duration:</strong> {{ contest.duration }}</p>
+    <p><strong>Allowed Languages: </strong> {{ contest.allowed_languages }}</p>
+    <p><strong>Difficulty Level:</strong> {{ contest.difficulty_level }}</p>
+    <p><strong>Description: </strong> {{ contest.description }}</p>
+    <p><strong>Instructions: </strong> {{ contest.instructions }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button [routerLink]="'/contest/:' + contest.id" color="accent">
+      View Contest
+    </button>
+  </mat-card-actions>
+</mat-card>
+
