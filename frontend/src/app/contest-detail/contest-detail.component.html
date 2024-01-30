@@ -2,29 +2,46 @@
 <!-- src/app/contest-details/contest-details.component.html -->
 
 <div class="contest-container">
-    <mat-sidenav-container class="sidenav-container">
-      <mat-sidenav class="sidenav" mode="side" opened>
-        <!-- Sidebar content (list of questions) goes here -->
-        <mat-nav-list>
-            <button mat-raised-button routerLink="/contests" style="margin-left: 15px;">
-                <mat-icon>arrow_back</mat-icon>
-                All Contest
-            </button>
-          <mat-list-item *ngFor="let question of questions" (click)="selectQuestion(question)">
-            {{ question.title }}
-          </mat-list-item>
-        </mat-nav-list>
-      </mat-sidenav>
-  
-      <mat-sidenav-content>
-        <!-- Main content area for question details -->
-        <div class="question-details">
-          <h2>{{ selectedQuestion?.title }}</h2>
-          <p>Difficulty Level: {{ selectedQuestion?.difficulty }}</p>
-          <p>Description: {{ selectedQuestion?.description }}</p>
-          <p>Question Content: {{ selectedQuestion?.content }}</p>
-          <p>Test Cases:</p>
-          <div *ngFor="let testCase of selectedQuestion?.testCases">
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav" mode="side" opened>
+      <!-- Sidebar content (list of questions) goes here -->
+      <mat-nav-list>
+        <button
+          mat-raised-button
+          routerLink="/contests"
+          style="margin-left: 15px"
+        >
+          <mat-icon>arrow_back</mat-icon>
+          All Contest
+        </button>
+        <mat-list-item
+          *ngFor="let question of questions"
+          (click)="selectQuestion(question)"
+        >
+          &#x2022; {{ question.title }}
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- Main content area for question details -->
+      <div class="question-details">
+        <h2>{{ selectedQuestion?.title }}</h2>
+        <p>Difficulty Level: {{ selectedQuestion?.difficulty_level }}</p>
+        <p style="white-space: pre-wrap;">Description: <br>{{ selectedQuestion?.Description }}</p>
+        <p>Points : {{ selectedQuestion?.points }}</p>
+        <p>Input_format: {{ selectedQuestion?.input_format }}</p>
+        <p>Output_format: {{ selectedQuestion?.output_format }}</p>
+        <p>Constraints: {{ selectedQuestion?.constraints }}</p>
+        <p>Sample Input: {{ selectedQuestion?.sample_input }}</p>
+        <p>Sample Output: {{ selectedQuestion?.sample_output }}</p>
+        <p>Memory_limit: {{ selectedQuestion?.memory_limit }}</p>
+        <p>Time Limit: {{ selectedQuestion?.time_limit }}</p>
+        <p>Points : {{ selectedQuestion?.points }}</p>
+        <p>tag: {{ selectedQuestion?.tags }}</p>
+        <p>Hints: {{ selectedQuestion?.hints }}</p>
+        <p>Creator : {{ selectedQuestion?.creator }}</p>
+        <!-- <div *ngFor="let testCase of selectedQuestion?.testCases">
             <pre>{{ testCase }}</pre>
           </div>
   
@@ -36,21 +53,68 @@
           <p>Sample Output:</p>
           <div *ngFor="let output of selectedQuestion?.sampleOutputs">
             <pre>{{ output }}</pre>
-          </div>
-  
-          <mat-form-field>
-            <textarea matInput placeholder="Your code here..." [(ngModel)]="code"></textarea>
-          </mat-form-field>
-          <button mat-stroked-button color="primary" (click)="submitCode()" style="margin-right: 10px;">
-            <mat-icon>play_arrow</mat-icon>
-            Run
-        </button>
-          <button mat-raised-button color="primary" (click)="submitCode()">
-            <mat-icon>cloud_upload</mat-icon>
-            Submit
-        </button>
-        </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
-  
+          </div> -->
+           <div style="display: flex; gap: 30px; align-items: center;">
+            <h3>Select A Language : </h3>
+            <mat-form-field style="width: 140px;">
+              <mat-select [(ngModel)]="selectedLanguage">
+          
+                <mat-option value="java">Java</mat-option>
+                <mat-option value="cpp">C++</mat-option>
+                <mat-option value="py">Python</mat-option>
+              </mat-select>
+            </mat-form-field>
+           </div>
+
+            <mat-form-field style="height: 50vh;">
+              <textarea
+                id="monospace"
+                style="height: 50vh;"
+                matInput
+                placeholder="Your code here..."
+                [(ngModel)]="code"
+              ></textarea>
+            </mat-form-field>
+
+            <div style="display: flex; gap:20px;">
+              <mat-form-field>
+                <textarea
+                  id="monospace"
+                  matInput
+                  placeholder="input.."
+                  [(ngModel)]="input"
+                ></textarea>
+              </mat-form-field>
+            
+              <mat-form-field>
+                <textarea
+                  id="monospace"
+                  matInput
+                  placeholder="output.."
+                  [(ngModel)]="output"
+                >{{output}}</textarea>
+              </mat-form-field>
+            </div>
+
+            <div style="display: flex; justify-content:space-between;">
+              <div></div>
+              <div>
+                <button
+                mat-stroked-button
+                color="primary"
+                (click)="runCode()"
+                style="margin-right: 10px"
+              >
+                <mat-icon>play_arrow</mat-icon>
+                Run
+              </button>
+              <button mat-raised-button color="primary" (click)="submitCode()">
+                <mat-icon>cloud_upload</mat-icon>
+                Submit
+              </button>
+              </div>
+            </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

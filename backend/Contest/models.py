@@ -11,7 +11,6 @@ class Contest(models.Model):
     instructions = models.TextField()
     allowed_languages = models.TextField()
     
-    
     def __str__(self):
         return self.name
 

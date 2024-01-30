@@ -11,7 +11,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class ContestSerializer(serializers.ModelSerializer):
-    courses = QuestionSerializer(many=True, read_only=True)
+    # courses = QuestionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Contest
